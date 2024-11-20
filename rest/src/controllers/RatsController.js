@@ -14,4 +14,9 @@ export class RatsController extends BaseController {
     console.log('Successful Test')
     response.send("Successful Test!")
   }
+
+  getRats(request, response, next) {
+    console.log('adding Rat, request.body');
+    response.send('Error')
+  }
 }
