@@ -7,7 +7,10 @@ export class RatsController extends BaseController {
 
   constructor() {
     super('api/rats')
-    this.router.get('', this.test)
+    this.router.get('', this.getRats)
+    this.router.get('/test', this.test)
+    this.router.get('', this.addRat)
+    this.router.get('', this.getOneRat)
   }
 
   test(request, response, next) {
@@ -16,13 +19,23 @@ export class RatsController extends BaseController {
   }
 
   async getRats(request, response, next) {
-    const Rats = await ratsService.getRats()
-    response.send('Error')
+    try {
+      const Rats = await ratsService.getRats()
+      response.send('rats')
+    } catch (error) {
+      next(error)
+    }
   }
 
-  addRat(request, response, next) {
-    const ratData = request.body
-    const rat = ratsService.addRat(ratData)
-    response.send(rat)
+  async getOneRat(request, reponse, next,)
+
+  async addRat(request, response, next) {
+    try {
+      const ratData = request.body
+      const rat = ratsService.addRat(ratData)
+      response.send(rat)
+    } catch (error) {
+      next(error)
+    }
   }
 }

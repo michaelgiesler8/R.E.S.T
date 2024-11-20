@@ -1,7 +1,7 @@
 import { Schema } from "mongoose";
 
 export const RatSchema = new Schema({
-  name: { type: String },
-  picture: { type: String },
-  age: { type: Number }
+  name: { type: String, required: true },
+  picture: { type: String, required: true },
+  callsign: { type: String, required: true }
 })
