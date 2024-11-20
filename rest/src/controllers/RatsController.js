@@ -15,8 +15,14 @@ export class RatsController extends BaseController {
     response.send("Successful Test!")
   }
 
-  getRats(request, response, next) {
-    console.log('adding Rat, request.body');
+  async getRats(request, response, next) {
+    const Rats = await ratsService.getRats()
     response.send('Error')
+  }
+
+  addRat(request, response, next) {
+    const ratData = request.body
+    const rat = ratsService.addRat(ratData)
+    response.send(rat)
   }
 }

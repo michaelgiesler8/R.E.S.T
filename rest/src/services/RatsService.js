@@ -1,10 +1,18 @@
-CONST RatsDB = {
+import { dbContext } from "../db/DbContext"
+
+const RatsDB = {
 
 }
 
-class CatsService {
+class RatsService {
   addRat(ratData) {
-    RatsDB.rats
+    const rat = await dbContext.Rats.create(ratData)
+    return rat
+  }
+
+  getRats() {
+    const rats = await dbContext.Rats.find()
+    return rats
   }
 }
 
