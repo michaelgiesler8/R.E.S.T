@@ -10,7 +10,7 @@ export class RatsController extends BaseController {
     this.router.get('', this.getRats)
     this.router.get('/test', this.test)
     this.router.get('', this.addRat)
-    this.router.get('', this.getOneRat)
+    this.router.get('/:ratId', this.getOneRat)
   }
 
   test(request, response, next) {
@@ -27,7 +27,17 @@ export class RatsController extends BaseController {
     }
   }
 
-  async getOneRat(request, reponse, next,)
+  async getOneRat(request, reponse, next,) {
+    try {
+      const ratId = request.params.ratId
+      console.log('getting', ratId);
+      const rat = await atService.getOneRat
+      response.send('getting your rat')
+    } catch (error) {
+      next(error)
+    }
+  }
+
 
   async addRat(request, response, next) {
     try {
